@@ -3,6 +3,7 @@ using LoginApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoginApi.Migrations
 {
     [DbContext(typeof(ApplicatioDbContext))]
-    partial class ApplicatioDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230523195727_animesfavoritos")]
+    partial class animesfavoritos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,6 +33,9 @@ namespace LoginApi.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("IdAnime")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdUsuario")
                         .HasColumnType("int");
 
                     b.Property<int>("UsuarioId")

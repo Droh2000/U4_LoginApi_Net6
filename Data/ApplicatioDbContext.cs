@@ -16,6 +16,7 @@ namespace LoginApi.Data
         // Creacion de la variable que representa la tabla en la BD
         // El nombre de la variable de ser igual al nombre de la tabla en la BD
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<AnimesFavoritos> AnimesFavoritos { get; set; }
     }
 }
 // DEspues de esto hay que agregar la configuracion de la conexion a la BD en el appsetting.json

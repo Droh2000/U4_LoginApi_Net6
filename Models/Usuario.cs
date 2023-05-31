@@ -15,5 +15,8 @@ namespace LoginApi.Models
         public string? ApellidoMaterno { get; set; }   
         public string Email { get; set; }
         public string Password { get; set; }
+
+        //Propiedades de navegación
+        public List<AnimesFavoritos> AnimesFavoritos { get; set; }
     }
 }

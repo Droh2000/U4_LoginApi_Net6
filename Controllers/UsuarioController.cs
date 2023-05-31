@@ -42,7 +42,19 @@ namespace LoginApi.Controllers
         {
             var usuarios = await _contex.Usuarios.ToListAsync();
             return _mapper.Map<List<UsuarioDTO>>(usuarios);
-        }       
+        }
+
+        // Obtener el Id del usuario cuando ya este dentro del sistema
+        [HttpGet("{email?}", Name = "UsuarioId")] // Pasar el email
+        public async Task<ActionResult<List<IdUsuarioDTO>>> GetUsuarioId(string email)
+        {
+            var usuario = await _contex.Usuarios.Where(x => x.Email.Contains(email)).ToListAsync();
+            if(usuario == null)
+                return BadRequest("No existe un usuario con ese correo");
+            return _mapper.Map<List<IdUsuarioDTO>>(usuario);      
+        }
+        
+            
 
         // POST: api/Usuario
         [HttpPost]

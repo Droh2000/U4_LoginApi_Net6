@@ -7,10 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Agregar la configuracion del Context relacionado con la BD de SQLserver
-builder.Services.AddDbContext<ApplicatioDbContext>(
+/*builder.Services.AddDbContext<ApplicatioDbContext>(
     // Aqui llamamos a la cadena de conexion
     opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection"))
-);
+);*/
+builder.Services.AddDbContext<ApplicatioDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection"));
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+});
 
 // Configuracion del AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
